@@ -3,6 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>職涯博覽會・媒體曝光｜Julie Hung</title>
+<meta name="description" content="主導 2025 職涯博覽會傳播策略：三波新聞稿議題布局，獲全國電視新聞與一線財經媒體報導。">
+<meta property="og:title" content="職涯博覽會・媒體曝光｜Julie Hung">
+<meta property="og:description" content="主導 2025 職涯博覽會傳播策略：三波新聞稿議題布局，獲全國電視新聞與一線財經媒體報導。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://julieehung-png.github.io/portfolio/career-fair.html">
+<meta property="og:image" content="https://julieehung-png.github.io/portfolio/portrait.jpg">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -18,7 +28,10 @@ body{margin:0;background:#faf7f2}
   [data-r="head"]{flex-direction:column;align-items:flex-start !important;gap:18px !important}
   [data-r="vgrid"]{grid-template-columns:1fr 1fr !important;gap:16px !important}
   [data-r="videorow"]{grid-template-columns:1fr !important}
-  [data-r="waves"]{grid-template-columns:1fr !important}
+  [data-r="waves"]{grid-template-columns:1fr !important;align-items:stretch !important}
+  [data-r="waves"]>div{min-height:0 !important}
+  [data-r="hrow"]{flex-wrap:wrap;row-gap:4px}
+  [data-r="hrow"]>div:first-child{word-break:keep-all;white-space:nowrap}
   [data-r="strat2"]{grid-template-columns:1fr !important}
   [data-r="shift"]{flex-direction:column !important}
   [data-r="shiftarrow"]{transform:rotate(90deg) !important}
@@ -47,7 +60,7 @@ body{margin:0;background:#faf7f2}
     <div style="font:400 15px/1.9 'Noto Sans TC',sans-serif;color:#6d5f4f;max-width:640px;margin-bottom:56px">{{ t.intro }}</div>
 
     <!-- PR strategy -->
-    <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:24px">
+    <div data-r="hrow" style="display:flex;align-items:baseline;gap:18px;margin-bottom:24px">
       <div style="font:400 30px Georgia,'Noto Serif TC',serif">{{ t.stratH }}</div>
       <div style="font:500 12px ui-monospace,Menlo,monospace;letter-spacing:.22em;color:#b0703c">PR STRATEGY</div>
     </div>
@@ -100,7 +113,7 @@ body{margin:0;background:#faf7f2}
     </div>
 
     <!-- TV news -->
-    <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:24px">
+    <div data-r="hrow" style="display:flex;align-items:baseline;gap:18px;margin-bottom:24px">
       <div style="font:400 30px Georgia,'Noto Serif TC',serif">{{ t.tvH }}</div>
       <div style="font:500 12px ui-monospace,Menlo,monospace;letter-spacing:.22em;color:#b0703c">TV NEWS</div>
     </div>
@@ -130,7 +143,7 @@ body{margin:0;background:#faf7f2}
     </div>
 
     <!-- articles -->
-    <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:24px">
+    <div data-r="hrow" style="display:flex;align-items:baseline;gap:18px;margin-bottom:24px">
       <div style="font:400 30px Georgia,'Noto Serif TC',serif">{{ t.pressH }}</div>
       <div style="font:500 12px ui-monospace,Menlo,monospace;letter-spacing:.22em;color:#b0703c">PRESS ARTICLES</div>
     </div>
