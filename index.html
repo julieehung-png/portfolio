@@ -13,15 +13,16 @@
 <meta name="twitter:card" content="summary">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@500;600;700&display=swap"></noscript>
 <script src="./support.js" defer></script>
 </head>
 <body>
 <x-dc>
 <helmet data-dc-atomics>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&amp;family=Noto+Serif+TC:wght@500;600;700&amp;display=swap">
-<script src="image-slot.js"></script>
+<script src="image-slot.js" defer></script>
 <style>
 html{scroll-behavior:smooth}
 body{margin:0;background:#faf7f2}
@@ -151,7 +152,7 @@ body{margin:0;background:#faf7f2}
       <div data-r="adeco" style="position:absolute;top:34px;left:-118px;width:86px;border-top:1.5px dashed rgba(176,112,60,.5);pointer-events:none"></div>
       <div data-r="adeco" style="position:absolute;bottom:52px;left:-46px;font:500 10.5px ui-monospace,Menlo,monospace;letter-spacing:.2em;color:#8a7a66;transform:rotate(-90deg);transform-origin:left bottom;white-space:nowrap;pointer-events:none">TAIPEI, TAIWAN ↗</div>
       <div data-r="adeco" style="position:absolute;bottom:-14px;right:-18px;z-index:2;font:500 10.5px ui-monospace,Menlo,monospace;letter-spacing:.2em;color:#8a7a66;background:#faf7f2;border:1px solid rgba(36,31,26,.14);border-radius:999px;padding:6px 14px;pointer-events:none">NICE TO MEET YOU</div>
-      <img data-r="portrait" src="portrait-web.jpg" alt="Julie Hung 個人照" loading="lazy" decoding="async" style="width:300px;height:380px;object-fit:cover;border-radius:16px;display:block;position:relative">
+      <img data-r="portrait" src="portrait-web.jpg" alt="Julie Hung 個人照" fetchpriority="high" decoding="async" style="width:300px;height:380px;object-fit:cover;border-radius:16px;display:block;position:relative">
     </div>
   </div>
 
@@ -287,9 +288,9 @@ body{margin:0;background:#faf7f2}
     <!-- featured projects -->
     <div data-r="feat" data-anim="feat0" style="display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;padding:8px 0 56px;border-bottom:1px solid rgba(36,31,26,.1);margin-bottom:56px;opacity:{{ f0O }};transform:{{ f0T }};transition:opacity .7s ease,transform .7s ease">
       <div data-r="featimg" style="position:relative;width:100%;height:380px;border-radius:14px;overflow:hidden;box-shadow:0 18px 44px rgba(36,31,26,.12)">
-        <img src="ea-i10.jpg" alt="職涯博覽會活動照片" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:{{ fr0 }};transition:opacity .4s">
-        <img src="ea-i11.jpg" alt="職涯博覽會活動照片" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:{{ fr1 }};transition:opacity .4s">
-        <img src="ea-i12.jpg" alt="職涯博覽會活動照片" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:{{ fr2 }};transition:opacity .4s">
+        <img src="ea-i10s.jpg" alt="職涯博覽會活動照片" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:{{ fr0 }};transition:opacity .4s">
+        <img src="ea-i11s.jpg" alt="職涯博覽會活動照片" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:{{ fr1 }};transition:opacity .4s">
+        <img src="ea-i12s.jpg" alt="職涯博覽會活動照片" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:{{ fr2 }};transition:opacity .4s">
         <button onClick="{{ frPrev }}" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;border:none;background:rgba(36,31,26,.7);color:#faf7f2;font-size:14px;cursor:pointer">←</button>
         <button onClick="{{ frNext }}" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;border:none;background:rgba(36,31,26,.7);color:#faf7f2;font-size:14px;cursor:pointer">→</button>
         <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:6px">
@@ -330,13 +331,13 @@ body{margin:0;background:#faf7f2}
         <a href="partnerships.html" style="align-self:flex-start;font:600 13.5px 'Noto Sans TC',sans-serif;color:#b0703c;text-decoration:none;border-bottom:1.5px solid rgba(176,112,60,.45);padding-bottom:3px">{{ t.careerMore }} ↗</a>
       </div>
       <div data-r="featimg" style="width:100%;height:380px;border-radius:14px;overflow:hidden;background:#fff;border:1px solid rgba(36,31,26,.1);display:flex;align-items:center;justify-content:center;box-shadow:0 18px 44px rgba(36,31,26,.1);order:2">
-        <img src="ea-i13.jpg" alt="轉職季跨品牌合作視覺" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain">
+        <img src="ea-i13s.jpg" alt="轉職季跨品牌合作視覺" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain">
       </div>
     </div>
 
     <div data-r="feat" data-anim="feat1" style="display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;padding:0 0 56px;border-bottom:1px solid rgba(36,31,26,.1);margin-bottom:56px;opacity:{{ f1O }};transform:{{ f1T }};transition:opacity .7s ease .1s,transform .7s ease .1s">
       <div data-r="featimg" style="width:100%;height:380px;border-radius:14px;overflow:hidden;background:#fff;border:1px solid rgba(36,31,26,.1);display:flex;align-items:center;justify-content:center;box-shadow:0 18px 44px rgba(36,31,26,.1)">
-        <img src="ea-i14.jpg" alt="NextTech Week Tokyo 簡報現場" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain">
+        <img src="ea-i14s.jpg" alt="NextTech Week Tokyo 簡報現場" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain">
       </div>
       <div style="display:flex;flex-direction:column;gap:16px">
         <div style="display:flex;align-items:center;gap:12px">
@@ -428,8 +429,8 @@ body{margin:0;background:#faf7f2}
 
       <div style="display:flex;flex-direction:column;flex:0 0 min(460px,86vw);scroll-snap-align:start;background:#fff;border:1px solid rgba(36,31,26,.1);border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(36,31,26,.05)">
         <div style="position:relative;width:100%;height:250px;overflow:hidden">
-          <img src="ea-i15.jpg" alt="ICTCOMM 越南展會照片" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:{{ ict0 }};transition:opacity .4s">
-          <img src="ea-i16.jpg" alt="ICTCOMM 越南展會照片" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:{{ ict1 }};transition:opacity .4s">
+          <img src="ea-i15s.jpg" alt="ICTCOMM 越南展會照片" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:{{ ict0 }};transition:opacity .4s">
+          <img src="ea-i16s.jpg" alt="ICTCOMM 越南展會照片" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:{{ ict1 }};transition:opacity .4s">
           <button onClick="{{ ictPrev }}" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;border:none;background:rgba(36,31,26,.7);color:#faf7f2;font-size:14px;cursor:pointer">←</button>
           <button onClick="{{ ictNext }}" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;border:none;background:rgba(36,31,26,.7);color:#faf7f2;font-size:14px;cursor:pointer">→</button>
           <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:6px">
@@ -446,7 +447,7 @@ body{margin:0;background:#faf7f2}
 
       <div style="display:flex;flex-direction:column;flex:0 0 min(460px,86vw);scroll-snap-align:start;background:#fff;border:1px solid rgba(36,31,26,.1);border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(36,31,26,.05)">
         <div style="width:100%;height:250px;background:#0c1020;display:flex;align-items:center;justify-content:center">
-          <img src="ea-i17.jpg" alt="Microsoft 注意力經濟工作坊" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain">
+          <img src="ea-i17s.jpg" alt="Microsoft 注意力經濟工作坊" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:contain">
         </div>
         <div style="display:flex;flex-direction:column;gap:10px;padding:20px 22px 24px">
           <div style="font:500 11px ui-monospace,Menlo,monospace;letter-spacing:.16em;color:#b0703c">KKCOMPANY · SPEAKING</div>
@@ -769,10 +770,10 @@ class Component extends DCLogic {
   };
 
   clips = [
-    { id: 'kxvtrqDC0YA', start: 213, tag: 'TV NEWS · CAKE', title: '電視新聞受訪｜勞動市場趨勢', tEn: 'TV News Interview — Labor Market Trends', cover: 'ea-i0.jpg' },
-    { id: 'LXr5JahW7zw', start: 178, tag: 'TV NEWS · CAKE', title: '電視新聞受訪｜十大高薪職場', tEn: 'TV News Interview — Top 10 High-Paying Workplaces', cover: 'ea-i1.jpg' },
-    { id: 'DEzLsHSHtf0', start: 119, tag: 'TV NEWS · CAKE', title: '電視新聞受訪｜職場內耗指數評估', tEn: 'TV News Interview — Workplace Burnout Index', cover: 'ea-i2.jpg' },
-    { id: 'GrTWy6h7NkA', start: 182, tag: 'TV NEWS · CAKE', title: '電視新聞受訪｜人才市場觀察', tEn: 'TV News Interview — Talent Market Insights', cover: 'ea-i3.jpg' }
+    { id: 'kxvtrqDC0YA', start: 213, tag: 'TV NEWS · CAKE', title: '電視新聞受訪｜勞動市場趨勢', tEn: 'TV News Interview — Labor Market Trends', cover: 'ea-i0s.jpg' },
+    { id: 'LXr5JahW7zw', start: 178, tag: 'TV NEWS · CAKE', title: '電視新聞受訪｜十大高薪職場', tEn: 'TV News Interview — Top 10 High-Paying Workplaces', cover: 'ea-i1s.jpg' },
+    { id: 'DEzLsHSHtf0', start: 119, tag: 'TV NEWS · CAKE', title: '電視新聞受訪｜職場內耗指數評估', tEn: 'TV News Interview — Workplace Burnout Index', cover: 'ea-i2s.jpg' },
+    { id: 'GrTWy6h7NkA', start: 182, tag: 'TV NEWS · CAKE', title: '電視新聞受訪｜人才市場觀察', tEn: 'TV News Interview — Talent Market Insights', cover: 'ea-i3s.jpg' }
   ];
 
   press = [
