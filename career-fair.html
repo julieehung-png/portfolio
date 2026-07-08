@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&amp;family=Noto+Serif+TC:wght@500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#faf7f2}
+@keyframes spinSlow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@media (max-width:960px){
+  [data-r="wrap"]{padding:72px 22px 64px !important}
+  [data-r="head"]{flex-direction:column;align-items:flex-start !important;gap:18px !important}
+  [data-r="vgrid"]{grid-template-columns:1fr 1fr !important;gap:16px !important}
+  [data-r="videorow"]{grid-template-columns:1fr !important}
+  [data-r="waves"]{grid-template-columns:1fr !important}
+  [data-r="strat2"]{grid-template-columns:1fr !important}
+  [data-r="shift"]{flex-direction:column !important}
+  [data-r="shiftarrow"]{transform:rotate(90deg) !important}
+  [data-r="pageh"]{font-size:30px !important}
+  [data-r="hdeco"]{display:none !important}
+  [data-r="langsw"]{position:fixed !important;top:12px;right:12px;z-index:60;background:rgba(250,247,242,.95);box-shadow:0 2px 10px rgba(36,31,26,.12)}
+}
+</style>
+</helmet>
+
+<div style="background:#faf7f2;color:#241f1a;font-family:Georgia,'Noto Serif TC',serif;min-height:100vh">
+  <div data-r="wrap" style="position:relative;max-width:1180px;margin:0 auto;padding:56px 64px 96px;box-sizing:border-box">
+    <div data-r="hdeco" style="position:absolute;top:140px;right:66px;pointer-events:none;font:400 24px Georgia,serif;color:#b0703c;opacity:.45;animation:spinSlow 28s linear infinite">✳︎</div>
+    <div data-r="hdeco" style="position:absolute;top:166px;right:118px;pointer-events:none;font:400 14px Georgia,serif;color:#b0703c;opacity:.5">✦</div>
+
+    <div data-r="head" style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;margin-bottom:16px">
+      <div style="display:flex;align-items:baseline;gap:18px;flex-wrap:wrap">
+        <div data-r="pageh" style="font:400 44px Georgia,'Noto Serif TC',serif">{{ t.pageH }}</div>
+        <div style="font:500 12px ui-monospace,Menlo,monospace;letter-spacing:.22em;color:#b0703c">PR / MEDIA EXPOSURE</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;flex-shrink:0">
+        <a href="index.html#work" style="font:600 13.5px 'Noto Sans TC',sans-serif;color:#241f1a;text-decoration:none;border-bottom:1.5px solid #241f1a;padding-bottom:3px">{{ t.back }}</a>
+        <span data-r="langsw" style="display:inline-flex;align-items:center;gap:2px;border:1.5px solid rgba(36,31,26,.22);border-radius:999px;padding:3px"><span onClick="{{ setZh }}" style="padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700;cursor:pointer;background:{{ zhBg }};color:{{ zhFg }};transition:background .2s,color .2s">中</span><span onClick="{{ setEn }}" style="padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700;cursor:pointer;background:{{ enBg }};color:{{ enFg }};transition:background .2s,color .2s">EN</span></span>
+      </div>
+    </div>
+    <div style="font:400 15px/1.9 'Noto Sans TC',sans-serif;color:#6d5f4f;max-width:640px;margin-bottom:56px">{{ t.intro }}</div>
+
+    <!-- PR strategy -->
+    <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:24px">
+      <div style="font:400 30px Georgia,'Noto Serif TC',serif">{{ t.stratH }}</div>
+      <div style="font:500 12px ui-monospace,Menlo,monospace;letter-spacing:.22em;color:#b0703c">PR STRATEGY</div>
+    </div>
+    <div style="font:400 15px/1.9 'Noto Sans TC',sans-serif;color:#6d5f4f;max-width:640px;margin-bottom:32px">{{ t.stratSub }}</div>
+
+    <div data-r="waves" data-anim="waves" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:end;margin-bottom:20px">
+      <div style="display:flex;flex-direction:column;justify-content:flex-end;gap:10px;min-height:{{ wave1H }};opacity:{{ waveOp }};background:#f3eee5;border-radius:14px;padding:24px 26px;box-sizing:border-box;transition:min-height .9s cubic-bezier(.22,.9,.3,1) .05s,opacity .6s,transform .25s" style-hover="transform:translateY(-6px)">
+        <div style="font:500 11px ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#b0703c">WAVE 01 · {{ t.w1k }}</div>
+        <div style="font:400 22px Georgia,'Noto Serif TC',serif;color:#241f1a">{{ t.w1t }}</div>
+        <div style="font:400 13px/1.8 'Noto Sans TC',sans-serif;color:#6d5f4f">{{ t.w1d }}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;justify-content:flex-end;gap:10px;min-height:{{ wave2H }};opacity:{{ waveOp }};background:#e4cfae;border-radius:14px;padding:24px 26px;box-sizing:border-box;transition:min-height .9s cubic-bezier(.22,.9,.3,1) .3s,opacity .6s .15s,transform .25s" style-hover="transform:translateY(-6px)">
+        <div style="font:500 11px ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#8a5426">WAVE 02 · {{ t.w2k }}</div>
+        <div style="font:400 22px Georgia,'Noto Serif TC',serif;color:#241f1a">{{ t.w2t }}</div>
+        <div style="font:400 13px/1.8 'Noto Sans TC',sans-serif;color:#5c4a33">{{ t.w2d }}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;justify-content:flex-end;gap:10px;min-height:{{ wave3H }};opacity:{{ waveOp }};background:#b0703c;border-radius:14px;padding:24px 26px;box-sizing:border-box;transition:min-height .9s cubic-bezier(.22,.9,.3,1) .55s,opacity .6s .3s,transform .25s" style-hover="transform:translateY(-6px)">
+        <div style="font:500 11px ui-monospace,Menlo,monospace;letter-spacing:.18em;color:rgba(250,247,242,.75)">WAVE 03 · {{ t.w3k }}</div>
+        <div style="font:400 22px Georgia,'Noto Serif TC',serif;color:#faf7f2">{{ t.w3t }}</div>
+        <div style="font:400 13px/1.8 'Noto Sans TC',sans-serif;color:rgba(250,247,242,.85)">{{ t.w3d }}</div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:28px">
+      <div style="font:500 11px ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#8a7a66">ISSUE MOMENTUM →</div>
+      <div style="font:500 11px ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#8a7a66">{{ t.momentum }}</div>
+    </div>
+
+    <div data-r="strat2" style="display:grid;grid-template-columns:1.2fr 1fr;gap:0;background:#241f1a;color:#faf7f2;border-radius:14px;overflow:hidden;margin-bottom:80px">
+      <div data-anim="shift" style="display:flex;flex-direction:column;gap:18px;padding:30px 34px;border-right:1px solid rgba(250,247,242,.12)">
+        <div style="font:500 11px ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#d9a06b">BRAND POSITIONING SHIFT</div>
+        <div data-r="shift" style="display:flex;align-items:center;gap:20px">
+          <div style="flex:1;font:400 19px/1.6 Georgia,'Noto Serif TC',serif;color:rgba(250,247,242,.55);opacity:{{ shiftO }};transform:{{ shiftT }};transition:opacity .6s,transform .6s">{{ t.shiftA1 }}<br>{{ t.shiftA2 }}</div>
+          <div data-r="shiftarrow" style="font:400 24px Georgia,serif;color:#d9a06b;flex-shrink:0;opacity:{{ shiftO }};transform:{{ shiftAT }};transition:opacity .5s .35s,transform .5s .35s">→</div>
+          <div style="flex:1.6;font:400 19px/1.6 Georgia,'Noto Serif TC',serif;opacity:{{ shiftO }};transform:{{ shiftT }};transition:opacity .6s .6s,transform .6s .6s">{{ t.shiftB1 }}<br>{{ t.shiftB2 }}</div>
+        </div>
+        <div style="font:400 13px/1.8 'Noto Sans TC',sans-serif;color:rgba(250,247,242,.6)">{{ t.shiftCap }}</div>
+      </div>
+      <div data-anim="stats" style="display:flex;flex-direction:column;gap:14px;padding:30px 34px">
+        <div style="font:500 11px ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#d9a06b">KEY OUTCOMES</div>
+        <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+          <div style="font:400 46px Georgia,'Noto Serif TC',serif;color:#d9a06b;line-height:1;min-width:5.2ch">{{ pickup }}</div>
+          <div style="font:600 13.5px/1.6 'Noto Sans TC',sans-serif;color:rgba(250,247,242,.88)">{{ t.o1 }}</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;font:400 13.5px/1.8 'Noto Sans TC',sans-serif;color:rgba(250,247,242,.88)">
+          <div style="display:flex;gap:10px"><div style="flex-shrink:0;color:#d9a06b">・</div><div>{{ t.o2 }}</div></div>
+          <div style="display:flex;gap:10px"><div style="flex-shrink:0;color:#d9a06b">・</div><div>{{ t.o3 }}</div></div>
+          <div style="display:flex;gap:10px"><div style="flex-shrink:0;color:#d9a06b">・</div><div>{{ t.o4 }}</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TV news -->
+    <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:24px">
+      <div style="font:400 30px Georgia,'Noto Serif TC',serif">{{ t.tvH }}</div>
+      <div style="font:500 12px ui-monospace,Menlo,monospace;letter-spacing:.22em;color:#b0703c">TV NEWS</div>
+    </div>
+    <div data-r="videorow" style="display:grid;grid-template-columns:1.6fr 1fr;gap:36px;align-items:start;margin-bottom:80px">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="position:relative;width:100%;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000">
+          <iframe src="{{ featSrc }}" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;inset:0;width:100%;height:100%;border:0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px">
+          <div style="font:600 17px 'Noto Sans TC',sans-serif">{{ featTitle }}</div>
+          <a href="{{ featUrl }}" target="_blank" style="flex-shrink:0;font:500 12.5px 'Noto Sans TC',sans-serif;color:#b0703c;text-decoration:none;border-bottom:1px solid rgba(176,112,60,.4);padding-bottom:2px">{{ t.watch }}</a>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <sc-for list="{{ clips }}" as="c" hint-placeholder-count="4">
+          <div onClick="{{ c.pick }}" style="display:flex;gap:14px;align-items:center;padding:10px;border-radius:12px;cursor:pointer;background:{{ c.bg }};border:1px solid {{ c.border }};transition:background .2s" style-hover="background:rgba(36,31,26,.05)">
+            <div style="position:relative;width:112px;height:63px;border-radius:8px;overflow:hidden;flex-shrink:0;background-color:#e8e0d2;background-image:url('{{ c.thumb }}');background-size:cover;background-position:center">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><div style="width:26px;height:26px;border-radius:50%;background:rgba(36,31,26,.72);display:flex;align-items:center;justify-content:center;color:#faf7f2;font-size:10px;padding-left:2px">▶︎</div></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+              <div style="font:500 11px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:#b0703c">{{ c.tag }}</div>
+              <div style="font:600 13.5px/1.5 'Noto Sans TC',sans-serif;color:#241f1a">{{ c.title }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- articles -->
+    <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:24px">
+      <div style="font:400 30px Georgia,'Noto Serif TC',serif">{{ t.pressH }}</div>
+      <div style="font:500 12px ui-monospace,Menlo,monospace;letter-spacing:.22em;color:#b0703c">PRESS ARTICLES</div>
+    </div>
+    <div data-r="vgrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+      <sc-for list="{{ articles }}" as="a" hint-placeholder-count="6">
+        <a href="{{ a.url }}" target="_blank" style="display:flex;flex-direction:column;background:#fff;border:1px solid rgba(36,31,26,.1);border-radius:14px;overflow:hidden;text-decoration:none;color:#241f1a;box-shadow:0 2px 10px rgba(36,31,26,.05);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-5px);box-shadow:0 12px 26px rgba(36,31,26,.13)">
+          <div style="position:relative;height:150px;display:flex;align-items:center;justify-content:center;background:#f3eee5;font:600 24px Georgia,'Noto Serif TC',serif;color:#c2ab88">{{ a.outlet }}<div style="position:absolute;inset:0;background-image:url('{{ a.cover }}');background-size:cover;background-position:center top"></div></div>
+          <div style="display:flex;flex-direction:column;gap:10px;padding:18px 20px 20px;flex:1">
+            <div style="font:500 11px ui-monospace,Menlo,monospace;letter-spacing:.16em;color:#b0703c">{{ a.tag }}</div>
+            <div style="font:600 15px/1.6 'Noto Sans TC',sans-serif">{{ a.title }}</div>
+            <div style="margin-top:auto;font:400 12.5px 'Noto Sans TC',sans-serif;color:#8a7a66">{{ a.outlet }} ↗</div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { clip: 0, play: false, wavesIn: false, statsIn: false, shiftIn: false, pickup: 0, lang: (typeof localStorage !== 'undefined' && localStorage.getItem('julie-lang')) || 'zh' };
+
+  dict = {
+    zh: {
+      pageH: '職涯博覽會・媒體曝光', back: '← 回到首頁',
+      intro: '2025 Cake Career Fair 職涯博覽會，主導傳播策略，將活動規模與勞動市場觀點轉化為媒體議題，獲全國電視新聞與一線財經媒體報導。',
+      stratH: '傳播策略',
+      stratSub: '以三波新聞稿形成明確議題脈絡：從 AI 趨勢的前導話題，延伸至政策合作與國際人才觀點，展現品牌議題布局的深度。',
+      w1k: '議題鋪陳', w1t: 'AI 趨勢前導', w1d: '以 AI 對就業市場的影響開題，建立議題聲量與媒體關注基礎。',
+      w2k: '議題升溫', w2t: '政策合作', w2d: '連結政府政策與活動亮點，強化公部門與產業之間的橋樑角色。',
+      w3k: '議題定調', w3t: '國際人才觀點', w3d: '以國際人才與跨境職涯觀點收尾，將議題推升至品牌定位層次。',
+      momentum: '議題聲量隨三波新聞稿逐階累積',
+      shiftA1: 'AI 就業', shiftA2: '觀察者', shiftB1: '連結政府與企業的', shiftB2: '國際人才平台',
+      shiftCap: '品牌聲量與政策關聯性皆明顯提升。',
+      o1: '媒體 Pick up 率 YoY 成長',
+      o2: 'Tier 1 媒體曝光較去年更穩定',
+      o3: '多家媒體主動延伸引用 Z 世代職涯調查數據（薪資、職涯發展）',
+      o4: '三波新聞稿環環相扣，議題熱度持續累積至活動當日',
+      tvH: '電視新聞報導', watch: '在 YouTube 觀看 ↗', pressH: '平面與網路報導'
+    },
+    en: {
+      pageH: 'Career Fair · Media Exposure', back: '← Back to Home',
+      intro: 'Led communications strategy for the 2025 Cake Career Fair, turning event scale and labor-market insights into media stories — covered by national TV news and tier-1 business media.',
+      stratH: 'Communications Strategy',
+      stratSub: 'Three press-release waves built a clear narrative arc: opening with AI trends, extending to government partnership, and closing with an international talent perspective.',
+      w1k: 'SETUP', w1t: 'AI Trend Opener', w1d: 'Opening with AI\'s impact on the job market to build issue volume and media attention.',
+      w2k: 'MOMENTUM', w2t: 'Policy Partnership', w2d: 'Linking government policy with event highlights, positioning the brand as a bridge between public sector and industry.',
+      w3k: 'POSITIONING', w3t: 'International Talent Angle', w3d: 'Closing with international talent and cross-border careers, elevating the story to brand positioning.',
+      momentum: 'Issue volume compounds across the three waves',
+      shiftA1: 'AI employment', shiftA2: 'observer', shiftB1: 'International talent platform', shiftB2: 'bridging government & business',
+      shiftCap: 'Clear gains in brand share of voice and policy relevance.',
+      o1: 'Media pick-up rate YoY growth',
+      o2: 'More consistent tier-1 media exposure than last year',
+      o3: 'Multiple outlets independently cited our Gen-Z career survey data (salary, career growth)',
+      o4: 'Three interlocking press waves kept momentum building through event day',
+      tvH: 'Broadcast Coverage', watch: 'Watch on YouTube ↗', pressH: 'Print & Online Coverage'
+    }
+  };
+
+  setLang(l) {
+    this.setState({ lang: l });
+    try { localStorage.setItem('julie-lang', l); } catch (e) {}
+  }
+
+  componentDidMount() {
+    if (!('IntersectionObserver' in window)) {
+      this.setState({ wavesIn: true, statsIn: true, shiftIn: true, pickup: 43.2 });
+      return;
+    }
+    this.io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        const kind = en.target.getAttribute('data-anim');
+        this.io.unobserve(en.target);
+        if (kind === 'waves') this.setState({ wavesIn: true });
+        if (kind === 'shift') this.setState({ shiftIn: true });
+        if (kind === 'stats') { this.setState({ statsIn: true }); this.countUp(); }
+      });
+    }, { threshold: 0.35 });
+    this.obTimer = setTimeout(() => this.reattachAnims(true), 300);
+  }
+
+  reattachAnims(force) {
+    if (!this.io) return;
+    const now = Date.now();
+    if (!force && this._lastScan && now - this._lastScan < 600) return;
+    this._lastScan = now;
+    document.querySelectorAll('[data-anim]').forEach((el) => {
+      if (!el.__animObserved) { el.__animObserved = true; this.io.observe(el); }
+    });
+  }
+
+  componentDidUpdate() { this.reattachAnims(); }
+
+  componentWillUnmount() {
+    clearTimeout(this.obTimer);
+    if (this.io) this.io.disconnect();
+    if (this.raf) cancelAnimationFrame(this.raf);
+  }
+
+  countUp() {
+    const dur = 1100, t0 = performance.now();
+    const tick = (now) => {
+      const p = Math.min(1, (now - t0) / dur);
+      const eased = 1 - Math.pow(1 - p, 3);
+      this.setState({ pickup: 43.2 * eased });
+      if (p < 1) this.raf = requestAnimationFrame(tick);
+    };
+    this.raf = requestAnimationFrame(tick);
+  }
+
+  clips = [
+    { id: 'bafDWmhrfyk', tag: '八大民生新聞', tagEn: 'GTV NEWS', title: '職涯博覽會現場報導', tEn: 'On-site Career Fair Coverage' },
+    { id: 'BvFHBjTkYnM', tag: '非凡新聞', tagEn: 'USTV NEWS', title: '人才市場與高薪職缺報導', tEn: 'Talent Market & High-Salary Jobs' },
+    { id: 'KNhDAObC3DE', tag: '三立新聞', tagEn: 'SET NEWS', title: '科技業開缺年薪 400 萬搶才', tEn: 'Tech Firms Offer NT$4M Salaries in Talent War' },
+    { id: '5bawfVEkaW4', tag: '台視新聞', tagEn: 'TTV NEWS', title: '具 AI 技能「薪」情好，薪資漲幅飆 40%', tEn: 'AI Skills Drive 40% Salary Growth' }
+  ];
+
+  enArticles = [
+    { o: 'Commercial Times', t: 'AI Hardware Demand Makes Taiwan Tech Talent Red-Hot' },
+    { o: 'Commercial Times', t: 'Nearly 90% of Gen Z Want High Pay? Plus Two More Conditions' },
+    { o: 'United Daily News', t: 'AI Talent War Begins — NT$3M Salaries Up for Grabs' },
+    { o: 'Economic Daily News', t: '150+ Organizations Join Cake Career Fair with Government Support' },
+    { o: 'NOWnews', t: 'Business & Design Salaries Soar 40% — the High-Pay Code Revealed' },
+    { o: 'Yahoo Finance', t: '87% of Gen Z Check Salary First When Job Hunting' }
+  ];
+
+  articles = [
+    { outlet: '工商時報', tag: 'BUSINESS PRESS', title: 'AI 帶動硬體需求，台科技人才炙手可熱', url: 'https://www.ctee.com.tw/news/20251006700064-439901', cover: 'https://images.ctee.com.tw/newsphoto/2025-10-06/1024/A03AA3_Table_Clipping_06_4.jpg' },
+    { outlet: '工商時報', tag: 'BUSINESS PRESS', title: '近 9 成 Z 世代愛高薪？人力平台：還有「2 條件」', url: 'https://www.ctee.com.tw/news/20250915701076-430503', cover: 'https://images.ctee.com.tw/newsphoto/2025-09-15/1024/20250915701077.jpg' },
+    { outlet: '聯合報', tag: 'NEWSPAPER', title: 'AI 搶才大戰開打，300 萬年薪工作等你來', url: 'https://udn.com/news/story/7269/9015739', cover: 'https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2025/09/19/realtime/33177278.jpg&s=Y&x=0&y=0&sw=5644&sh=3763&exp=3600&w=930' },
+    { outlet: '經濟日報', tag: 'BUSINESS PRESS', title: '150+ 企業組織齊聚 Cake 職涯博覽會，產發署、青年署助攻國際人才', url: 'https://money.udn.com/money/story/5635/9007290', cover: 'https://pgw.udn.com.tw/gw/photo.php?u=https://uc.udn.com.tw/photo/2025/09/16/2/33146336.jpeg&x=0&y=0&sw=0&sh=0&sl=W&fw=1050&exp=3600' },
+    { outlet: '今日新聞', tag: 'ONLINE NEWS', title: '商管、設計薪資飆漲 40%，高薪密碼揭曉', url: 'https://news.pchome.com.tw/finance/nownews/20250817/index-75539808820431207003.html', cover: 'https://news.pchome.com.tw/newsdata/finance/nownews/20250817/75539808820431207003.jpg' },
+    { outlet: 'Yahoo 財經', tag: 'FINANCE', title: '87% Z 世代求職先看薪資', url: 'https://tw.stock.yahoo.com/news/87-z%E4%B8%96%E4%BB%A3-%E6%B1%82%E8%81%B7%E5%85%88%E7%9C%8B%E8%96%AA%E8%B3%87-201000439.html', cover: 'https://s.yimg.com/os/ko/ctee_com_tw_678/8a393decadf6d467bc5f71ed49dbbb87' }
+  ];
+
+  renderVals() {
+    const idx = this.state.clip;
+    const feat = this.clips[idx];
+    const auto = this.state.play ? '&autoplay=1' : '';
+    const w = this.state.wavesIn, s = this.state.shiftIn;
+    const lang = this.state.lang, en = lang === 'en';
+    const active = { bg: '#241f1a', fg: '#faf7f2' }, idle = { bg: 'transparent', fg: '#8a7a66' };
+    return {
+      t: this.dict[lang],
+      setZh: () => this.setLang('zh'),
+      setEn: () => this.setLang('en'),
+      zhBg: !en ? active.bg : idle.bg, zhFg: !en ? active.fg : idle.fg,
+      enBg: en ? active.bg : idle.bg, enFg: en ? active.fg : idle.fg,
+      articles: this.articles.map((a, i) => ({ ...a, outlet: en ? this.enArticles[i].o : a.outlet, title: en ? this.enArticles[i].t : a.title })),
+      wave1H: w ? '230px' : '130px',
+      wave2H: w ? '300px' : '130px',
+      wave3H: w ? '370px' : '130px',
+      waveOp: w ? 1 : 0.35,
+      pickup: this.state.pickup.toFixed(1) + '%',
+      shiftO: s ? 1 : 0,
+      shiftT: s ? 'translateY(0)' : 'translateY(10px)',
+      shiftAT: s ? 'translateX(0)' : 'translateX(-10px)',
+      featSrc: `https://www.youtube.com/embed/${feat.id}?rel=0${auto}`,
+      featTitle: en ? (feat.tagEn + ' — ' + feat.tEn) : (feat.tag + '｜' + feat.title),
+      featUrl: `https://www.youtube.com/watch?v=${feat.id}`,
+      clips: this.clips.map((c, i) => ({
+        tag: en ? c.tagEn : c.tag, title: en ? c.tEn : c.title,
+        thumb: `https://img.youtube.com/vi/${c.id}/mqdefault.jpg`,
+        pick: () => this.setState({ clip: i, play: true }),
+        bg: i === idx ? 'rgba(176,112,60,.1)' : 'transparent',
+        border: i === idx ? 'rgba(176,112,60,.4)' : 'transparent'
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

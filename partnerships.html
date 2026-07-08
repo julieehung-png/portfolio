@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&amp;family=Noto+Serif+TC:wght@500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#faf7f2}
+@keyframes spinSlow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes pulseDot{0%,100%{opacity:1}50%{opacity:.35}}
+@media (max-width:960px){
+  [data-r="wrap"]{padding:72px 22px 64px !important}
+  [data-r="pageh"]{font-size:30px !important}
+  [data-r="hdeco"]{display:none !important}
+  [data-r="langsw"]{position:fixed !important;top:12px;right:12px;z-index:60;background:rgba(250,247,242,.95);box-shadow:0 2px 10px rgba(36,31,26,.12)}
+  [data-r="steplabel"]{flex-shrink:1 !important;min-width:0;line-height:1.7}
+  [data-r="pzbar"]{display:none !important}
+  [data-r="pztitle"]{padding-right:0 !important}
+  [data-r="prizedot"]{display:none}
+  [data-r="prizeh2"]{display:block !important}
+  [data-r="hero"]{grid-template-columns:1fr !important}
+  [data-r="head"]{flex-direction:column;align-items:flex-start !important;gap:18px !important}
+  [data-r="prizes"]{grid-template-columns:1fr 1fr !important}
+  [data-r="stats"]{flex-wrap:wrap;gap:24px !important}
+  [data-r="gates"]{grid-template-columns:1fr !important}
+  [data-r="pack"]{grid-template-columns:1fr 1fr !important}
+  [data-r="exchange"]{grid-template-columns:1fr !important}
+  [data-r="why"]{grid-template-columns:1fr !important}
+  [data-r="boarding"]{flex-direction:column;align-items:stretch !important}
+  [data-r="boarding"]>div{border-left:none !important;border-top:1.5px dashed rgba(36,31,26,.22);margin-left:0 !important}
+  [data-r="boarding"]>div:first-child{border-top:none}
+}
+</style>
+</helmet>
+
+<div style="background:#faf7f2;color:#241f1a;font-family:Georgia,'Noto Serif TC',serif;min-height:100vh">
+  <div data-r="wrap" style="position:relative;max-width:1180px;margin:0 auto;padding:56px 64px 96px;box-sizing:border-box">
+    <div data-r="hdeco" style="position:absolute;top:210px;right:70px;pointer-events:none;font:400 22px Georgia,serif;color:#b0703c;opacity:.45;animation:spinSlow 30s linear infinite">✳︎</div>
+    <div data-r="hdeco" style="position:absolute;top:238px;right:122px;pointer-events:none;font:400 14px Georgia,serif;color:#b0703c;opacity:.5">✦</div>
+
+    <div data-r="head" style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;margin-bottom:20px">
+      <div style="display:flex;align-items:baseline;gap:18px;flex-wrap:wrap">
+        <div data-r="pageh" style="font:400 44px Georgia,'Noto Serif TC',serif">{{ t.pageH }}</div>
+        <div style="font:500 12px ui-monospace,Menlo,monospace;letter-spacing:.22em;color:#b0703c">CROSS-BRAND PARTNERSHIPS</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;flex-shrink:0">
+        <a href="index.html#work" style="font:600 13.5px 'Noto Sans TC',sans-serif;color:#241f1a;text-decoration:none;border-bottom:1.5px solid #241f1a;padding-bottom:3px">{{ t.back }}</a>
+        <span data-r="langsw" style="display:inline-flex;align-items:center;gap:2px;border:1.5px solid rgba(36,31,26,.22);border-radius:999px;padding:3px"><span onClick="{{ setZh }}" style="padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700;cursor:pointer;background:{{ zhBg }};color:{{ zhFg }};transition:background .2s,color .2s">中</span><span onClick="{{ setEn }}" style="padding:4px 12px;border-radius:999px;font-size:12px;font-weight:700;cursor:pointer;background:{{ enBg }};color:{{ enFg }};transition:background .2s,color .2s">EN</span></span>
+      </div>
+    </div>
+
+    <!-- boarding pass strip -->
+    <div data-r="boarding" style="display:flex;flex-wrap:wrap;align-items:stretch;background:#f3eee5;color:#241f1a;border:1px solid rgba(36,31,26,.12);border-radius:14px;overflow:hidden;margin-bottom:56px">
+      <div style="display:flex;align-items:center;gap:10px;padding:16px 24px;font:500 11px ui-monospace,Menlo,monospace;letter-spacing:.2em;color:#b0703c">
+        <span style="width:8px;height:8px;border-radius:50%;background:#e2574c;animation:pulseDot 1.6s ease-in-out infinite"></span>NOW BOARDING
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;padding:16px 24px;border-left:1.5px dashed rgba(36,31,26,.22);font:400 17px Georgia,'Noto Serif TC',serif">
+        <span>JOB</span><span style="color:#b0703c;font-size:15px">✈︎</span><span>OFFER</span>
+      </div>
+      <div style="display:flex;align-items:center;padding:16px 24px;border-left:1.5px dashed rgba(36,31,26,.22);font:500 11px ui-monospace,Menlo,monospace;letter-spacing:.2em;color:#8a7a66">{{ t.boardMeta }}</div>
+      <div style="display:flex;align-items:center;margin-left:auto;padding:16px 24px;border-left:1.5px dashed rgba(36,31,26,.22)">
+        <div style="width:96px;height:24px;background:repeating-linear-gradient(90deg,#241f1a 0 3px,transparent 3px 5px,#241f1a 5px 6px,transparent 6px 10px,#241f1a 10px 14px,transparent 14px 16px,#241f1a 16px 17px,transparent 17px 21px,#241f1a 21px 23px,transparent 23px 27px);opacity:.55"></div>
+      </div>
+    </div>
+
+    <div data-r="hero" style="display:grid;grid-template-columns:420px 1fr;gap:56px;align-items:center;margin-bottom:72px">
+      <div style="border-radius:16px;overflow:hidden;background:#fff;border:1px solid rgba(36,31,26,.08);box-shadow:0 18px 44px rgba(36,31,26,.13)">
+        <img src="ea-i13.jpg" style="width:100%;display:block">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <div style="font:400 30px/1.5 Georgia,'Noto Serif TC',serif">{{ t.heroH1 }}<br>{{ t.heroH2 }}</div>
+        <div style="font:400 15px/2 'Noto Sans TC',sans-serif;color:#6d5f4f">{{ t.heroBody }}</div>
+        <div data-r="stats" data-anim="herostats" style="display:flex;gap:44px;padding-top:16px;border-top:1px solid rgba(36,31,26,.1)">
+          <div><div style="font:600 28px Georgia,serif;color:#b0703c">{{ hv1 }}</div><div style="font:400 13px 'Noto Sans TC',sans-serif;color:#8a7a66;margin-top:4px">{{ t.s1l }}</div></div>
+          <div><div style="font:600 28px Georgia,serif;color:#b0703c;min-width:2.6ch">{{ hv2 }}</div><div style="font:400 13px 'Noto Sans TC',sans-serif;color:#8a7a66;margin-top:4px">{{ t.s2l }}</div></div>
+          <div><div style="font:600 28px Georgia,serif;color:#b0703c">{{ hv3 }}</div><div style="font:400 13px 'Noto Sans TC',sans-serif;color:#8a7a66;margin-top:4px">{{ t.s3l }}</div></div>
+          <div><div style="font:600 28px Georgia,serif;color:#b0703c;min-width:6.5ch">{{ hv4 }}</div><div style="font:400 13px 'Noto Sans TC',sans-serif;color:#8a7a66;margin-top:4px">{{ t.s4l }}</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Proposal & packaging strategy -->
+    <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:14px">
+      <div style="font:400 30px Georgia,'Noto Serif TC',serif">{{ t.propH }}</div>
+      <div style="font:500 12px ui-monospace,Menlo,monospace;letter-spacing:.22em;color:#b0703c">PROPOSAL &amp; PACKAGING</div>
+    </div>
+    <div style="font:400 14px/1.9 'Noto Sans TC',sans-serif;color:#6d5f4f;max-width:640px;margin-bottom:36px">{{ t.propSub }}</div>
+
+    <div data-anim="step1" style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
+      <div data-r="steplabel" style="font:500 11px ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#8a7a66;flex-shrink:0">STEP 1 — {{ t.step1 }}</div>
+      <div style="position:relative;flex:1;height:18px">
+        <div style="position:absolute;left:0;right:0;top:8px;border-top:2px dashed rgba(176,112,60,.4)"></div>
+        <div style="position:absolute;top:-2px;left:{{ plane1L }};margin-left:-9px;font-size:15px;line-height:1.4;color:#b0703c;transition:left 2.4s cubic-bezier(.45,.05,.35,1)">✈︎</div>
+      </div>
+      <div style="width:0;height:0;border-left:12px solid #b0703c;border-top:7px solid transparent;border-bottom:7px solid transparent"></div>
+    </div>
+    <div data-r="gates" data-anim="gates" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:44px">
+      <div style="background:#fff;border:1px solid rgba(36,31,26,.1);border-radius:14px;padding:26px 26px 24px;display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center;opacity:{{ gateO }};transform:{{ gateT }};transition:opacity .6s ease,transform .6s ease">
+        <div style="position:relative;width:110px;height:92px;margin-bottom:6px">
+          <div style="position:absolute;inset:0;border:3px solid #b0703c;border-bottom:none;border-radius:55px 55px 0 0"></div>
+          <div style="position:absolute;left:50%;transform:translateX(-50%);bottom:0;width:46px;height:38px;background:#f3eee5;border-radius:23px 23px 0 0"></div>
+          <div style="position:absolute;left:50%;top:24px;background:#241f1a;color:#faf7f2;font:600 10px ui-monospace,Menlo,monospace;letter-spacing:.12em;padding:4px 9px;border-radius:4px;white-space:nowrap;opacity:{{ gateO }};transform:{{ signT }};transition:opacity .5s .45s,transform .5s .45s">GATE 1</div>
+        </div>
+        <div style="font:600 16.5px 'Noto Sans TC',sans-serif">{{ t.g1t }}</div>
+        <div style="font:400 13.5px/1.8 'Noto Sans TC',sans-serif;color:#6d5f4f">{{ t.g1d }}</div>
+      </div>
+      <div style="background:#fff;border:1px solid rgba(36,31,26,.1);border-radius:14px;padding:26px 26px 24px;display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center;opacity:{{ gateO }};transform:{{ gateT }};transition:opacity .6s ease .15s,transform .6s ease .15s">
+        <div style="position:relative;width:110px;height:92px;margin-bottom:6px">
+          <div style="position:absolute;inset:0;border:3px solid #b0703c;border-bottom:none;border-radius:55px 55px 0 0"></div>
+          <div style="position:absolute;left:50%;transform:translateX(-50%);bottom:0;width:46px;height:38px;background:#f3eee5;border-radius:23px 23px 0 0"></div>
+          <div style="position:absolute;left:50%;top:24px;background:#241f1a;color:#faf7f2;font:600 10px ui-monospace,Menlo,monospace;letter-spacing:.12em;padding:4px 9px;border-radius:4px;white-space:nowrap;opacity:{{ gateO }};transform:{{ signT }};transition:opacity .5s .6s,transform .5s .6s">GATE 2</div>
+        </div>
+        <div style="font:600 16.5px 'Noto Sans TC',sans-serif">{{ t.g2t }}</div>
+        <div style="font:400 13.5px/1.8 'Noto Sans TC',sans-serif;color:#6d5f4f">{{ t.g2d }}</div>
+      </div>
+      <div style="background:#fff;border:1px solid rgba(36,31,26,.1);border-radius:14px;padding:26px 26px 24px;display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center;opacity:{{ gateO }};transform:{{ gateT }};transition:opacity .6s ease .3s,transform .6s ease .3s">
+        <div style="position:relative;width:110px;height:92px;margin-bottom:6px">
+          <div style="position:absolute;inset:0;border:3px solid #b0703c;border-bottom:none;border-radius:55px 55px 0 0"></div>
+          <div style="position:absolute;left:50%;transform:translateX(-50%);bottom:0;width:46px;height:38px;background:#e4cfae;border-radius:23px 23px 0 0"></div>
+          <div style="position:absolute;left:50%;top:24px;background:#b0703c;color:#faf7f2;font:600 10px ui-monospace,Menlo,monospace;letter-spacing:.12em;padding:4px 9px;border-radius:4px;white-space:nowrap;opacity:{{ gateO }};transform:{{ signT }};transition:opacity .5s .75s,transform .5s .75s">GATE 3</div>
+        </div>
+        <div style="font:600 16.5px 'Noto Sans TC',sans-serif">{{ t.g3t }}</div>
+        <div style="font:400 13.5px/1.8 'Noto Sans TC',sans-serif;color:#6d5f4f">{{ t.g3d }}</div>
+      </div>
+    </div>
+
+    <div data-anim="step2" style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
+      <div data-r="steplabel" style="font:500 11px ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#8a7a66;flex-shrink:0">STEP 2 — {{ t.step2 }}</div>
+      <div style="position:relative;flex:1;height:18px">
+        <div style="position:absolute;left:0;right:0;top:8px;border-top:2px dashed rgba(176,112,60,.4)"></div>
+        <div style="position:absolute;top:-2px;left:{{ plane2L }};margin-left:-9px;font-size:15px;line-height:1.4;color:#b0703c;transition:left 2.4s cubic-bezier(.45,.05,.35,1)">✈︎</div>
+      </div>
+      <div style="width:0;height:0;border-left:12px solid #b0703c;border-top:7px solid transparent;border-bottom:7px solid transparent"></div>
+    </div>
+    <div data-r="pack" style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:44px">
+      <div style="position:relative;background:#fff;border:1px solid rgba(36,31,26,.12);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center;overflow:hidden">
+        <div style="position:absolute;left:-9px;top:50%;transform:translateY(-50%);width:18px;height:18px;border-radius:50%;background:#faf7f2;border:1px solid rgba(36,31,26,.12)"></div>
+        <div style="position:absolute;right:-9px;top:50%;transform:translateY(-50%);width:18px;height:18px;border-radius:50%;background:#faf7f2;border:1px solid rgba(36,31,26,.12)"></div>
+        <div style="width:58px;height:58px;border:2px dashed #b0703c;border-radius:50%;display:flex;align-items:center;justify-content:center;font:400 26px Georgia,'Noto Serif TC',serif;color:#b0703c;transform:rotate(-6deg)">食</div>
+        <div style="width:100%;border-top:1.5px dashed rgba(36,31,26,.18);margin:4px 0"></div>
+        <div style="font:600 14px 'Noto Sans TC',sans-serif">{{ t.p1t }}</div>
+        <div style="font:400 13px/1.7 'Noto Sans TC',sans-serif;color:#6d5f4f">{{ t.p1d }}</div>
+      </div>
+      <div style="position:relative;background:#fff;border:1px solid rgba(36,31,26,.12);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center;overflow:hidden">
+        <div style="position:absolute;left:-9px;top:50%;transform:translateY(-50%);width:18px;height:18px;border-radius:50%;background:#faf7f2;border:1px solid rgba(36,31,26,.12)"></div>
+        <div style="position:absolute;right:-9px;top:50%;transform:translateY(-50%);width:18px;height:18px;border-radius:50%;background:#faf7f2;border:1px solid rgba(36,31,26,.12)"></div>
+        <div style="width:58px;height:58px;border:2px dashed #b0703c;border-radius:50%;display:flex;align-items:center;justify-content:center;font:400 26px Georgia,'Noto Serif TC',serif;color:#b0703c;transform:rotate(5deg)">行</div>
+        <div style="width:100%;border-top:1.5px dashed rgba(36,31,26,.18);margin:4px 0"></div>
+        <div style="font:600 14px 'Noto Sans TC',sans-serif">{{ t.p2t }}</div>
+        <div style="font:400 13px/1.7 'Noto Sans TC',sans-serif;color:#6d5f4f">{{ t.p2d }}</div>
+      </div>
+      <div style="position:relative;background:#fff;border:1px solid rgba(36,31,26,.12);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center;overflow:hidden">
+        <div style="position:absolute;left:-9px;top:50%;transform:translateY(-50%);width:18px;height:18px;border-radius:50%;background:#faf7f2;border:1px solid rgba(36,31,26,.12)"></div>
+        <div style="position:absolute;right:-9px;top:50%;transform:translateY(-50%);width:18px;height:18px;border-radius:50%;background:#faf7f2;border:1px solid rgba(36,31,26,.12)"></div>
+        <div style="width:58px;height:58px;border:2px dashed #b0703c;border-radius:50%;display:flex;align-items:center;justify-content:center;font:400 26px Georgia,'Noto Serif TC',serif;color:#b0703c;transform:rotate(-4deg)">育</div>
+        <div style="width:100%;border-top:1.5px dashed rgba(36,31,26,.18);margin:4px 0"></div>
+        <div style="font:600 14px 'Noto Sans TC',sans-serif">{{ t.p3t }}</div>
+        <div style="font:400 13px/1.7 'Noto Sans TC',sans-serif;color:#6d5f4f">{{ t.p3d }}</div>
+      </div>
+      <div style="position:relative;background:#fff;border:1px solid rgba(36,31,26,.12);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center;overflow:hidden">
+        <div style="position:absolute;left:-9px;top:50%;transform:translateY(-50%);width:18px;height:18px;border-radius:50%;background:#faf7f2;border:1px solid rgba(36,31,26,.12)"></div>
+        <div style="position:absolute;right:-9px;top:50%;transform:translateY(-50%);width:18px;height:18px;border-radius:50%;background:#faf7f2;border:1px solid rgba(36,31,26,.12)"></div>
+        <div style="width:58px;height:58px;border:2px dashed #b0703c;border-radius:50%;display:flex;align-items:center;justify-content:center;font:400 26px Georgia,'Noto Serif TC',serif;color:#b0703c;transform:rotate(7deg)">樂</div>
+        <div style="width:100%;border-top:1.5px dashed rgba(36,31,26,.18);margin:4px 0"></div>
+        <div style="font:600 14px 'Noto Sans TC',sans-serif">{{ t.p4t }}</div>
+        <div style="font:400 13px/1.7 'Noto Sans TC',sans-serif;color:#6d5f4f">{{ t.p4d }}</div>
+      </div>
+    </div>
+
+    <div data-anim="step3" style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
+      <div data-r="steplabel" style="font:500 11px ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#8a7a66;flex-shrink:0">STEP 3 — {{ t.step3 }}</div>
+      <div style="position:relative;flex:1;height:18px">
+        <div style="position:absolute;left:0;right:0;top:8px;border-top:2px dashed rgba(176,112,60,.4)"></div>
+        <div style="position:absolute;top:-2px;left:{{ plane3L }};margin-left:-9px;font-size:15px;line-height:1.4;color:#b0703c;transition:left 2.4s cubic-bezier(.45,.05,.35,1)">✈︎</div>
+      </div>
+      <div style="width:0;height:0;border-left:12px solid #b0703c;border-top:7px solid transparent;border-bottom:7px solid transparent"></div>
+    </div>
+    <div data-r="exchange" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:28px">
+      <div style="background:#241f1a;color:#faf7f2;border-radius:14px;padding:26px 30px;display:flex;flex-direction:column;gap:14px">
+        <div style="font:500 11px ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#d9a06b">{{ t.exA }}</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font:400 13.5px/1.8 'Noto Sans TC',sans-serif;color:rgba(250,247,242,.88)">
+          <div style="display:flex;gap:10px"><div style="flex-shrink:0;color:#d9a06b">・</div><div>{{ t.exA1 }}</div></div>
+          <div style="display:flex;gap:10px"><div style="flex-shrink:0;color:#d9a06b">・</div><div>{{ t.exA2 }}</div></div>
+          <div style="display:flex;gap:10px"><div style="flex-shrink:0;color:#d9a06b">・</div><div>{{ t.exA3 }}</div></div>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid rgba(36,31,26,.1);border-radius:14px;padding:26px 30px;display:flex;flex-direction:column;gap:14px">
+        <div style="font:500 11px ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#b0703c">{{ t.exB }}</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font:400 13.5px/1.8 'Noto Sans TC',sans-serif;color:#3d362e">
+          <div style="display:flex;gap:10px"><div style="flex-shrink:0;color:#b0703c">・</div><div>{{ t.exB1 }}</div></div>
+          <div style="display:flex;gap:10px"><div style="flex-shrink:0;color:#b0703c">・</div><div>{{ t.exB2 }}</div></div>
+          <div style="display:flex;gap:10px"><div style="flex-shrink:0;color:#b0703c">・</div><div>{{ t.exB3 }}</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="font:500 11px ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#8a7a66;margin-bottom:18px">WHY BRANDS SAY YES · {{ t.whyH }}</div>
+    <div data-r="why" style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:80px;align-items:start">
+      <div style="position:relative;background:#fff;border:1px solid rgba(36,31,26,.14);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;transform:rotate(-1.5deg);transition:transform .25s,box-shadow .25s" style-hover="transform:rotate(0deg) translateY(-3px);box-shadow:0 12px 26px rgba(36,31,26,.1)">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:12px;height:12px;border-radius:50%;border:3.5px solid #e4cfae;background:#faf7f2;flex-shrink:0"></div>
+          <div style="font:500 10px ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#b0703c">TAG 01</div>
+        </div>
+        <div style="font:600 14.5px 'Noto Sans TC',sans-serif">{{ t.tag1t }}</div>
+        <div style="font:400 13px/1.7 'Noto Sans TC',sans-serif;color:#6d5f4f">{{ t.tag1d }}</div>
+      </div>
+      <div style="position:relative;background:#fff;border:1px solid rgba(36,31,26,.14);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;transform:rotate(1deg) translateY(6px);transition:transform .25s,box-shadow .25s" style-hover="transform:rotate(0deg) translateY(3px);box-shadow:0 12px 26px rgba(36,31,26,.1)">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:12px;height:12px;border-radius:50%;border:3.5px solid #e4cfae;background:#faf7f2;flex-shrink:0"></div>
+          <div style="font:500 10px ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#b0703c">TAG 02</div>
+        </div>
+        <div style="font:600 14.5px 'Noto Sans TC',sans-serif">{{ t.tag2t }}</div>
+        <div style="font:400 13px/1.7 'Noto Sans TC',sans-serif;color:#6d5f4f">{{ t.tag2d }}</div>
+      </div>
+      <div style="position:relative;background:#fff;border:1px solid rgba(36,31,26,.14);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;transform:rotate(-1deg);transition:transform .25s,box-shadow .25s" style-hover="transform:rotate(0deg) translateY(-3px);box-shadow:0 12px 26px rgba(36,31,26,.1)">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:12px;height:12px;border-radius:50%;border:3.5px solid #e4cfae;background:#faf7f2;flex-shrink:0"></div>
+          <div style="font:500 10px ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#b0703c">TAG 03</div>
+        </div>
+        <div style="font:600 14.5px 'Noto Sans TC',sans-serif">{{ t.tag3t }}</div>
+        <div style="font:400 13px/1.7 'Noto Sans TC',sans-serif;color:#6d5f4f">{{ t.tag3d }}</div>
+      </div>
+      <div style="position:relative;background:#fff;border:1px solid rgba(36,31,26,.14);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;transform:rotate(1.5deg) translateY(5px);transition:transform .25s,box-shadow .25s" style-hover="transform:rotate(0deg) translateY(2px);box-shadow:0 12px 26px rgba(36,31,26,.1)">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:12px;height:12px;border-radius:50%;border:3.5px solid #e4cfae;background:#faf7f2;flex-shrink:0"></div>
+          <div style="font:500 10px ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#b0703c">TAG 04</div>
+        </div>
+        <div style="font:600 14.5px 'Noto Sans TC',sans-serif">{{ t.tag4t }}</div>
+        <div style="font:400 13px/1.7 'Noto Sans TC',sans-serif;color:#6d5f4f">{{ t.tag4d }}</div>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:14px">
+      <div style="font:400 30px Georgia,'Noto Serif TC',serif">{{ t.prizeH1 }}<span data-r="prizedot">・</span><span data-r="prizeh2" style="display:inline">{{ t.prizeH2 }}</span></div>
+      <div style="font:500 12px ui-monospace,Menlo,monospace;letter-spacing:.22em;color:#b0703c">PRIZE POOL</div>
+    </div>
+    <div style="font:400 14px/1.9 'Noto Sans TC',sans-serif;color:#6d5f4f;max-width:620px;margin-bottom:36px">{{ t.prizeSub }}</div>
+
+    <div data-r="prizes" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:80px">
+      <sc-for list="{{ prizes }}" as="pz" hint-placeholder-count="9">
+        <div style="position:relative;background:#fff;border:1px solid rgba(36,31,26,.12);border-radius:14px;padding:22px 24px;display:flex;flex-direction:column;gap:8px;overflow:hidden;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-4px) rotate(-1.2deg);box-shadow:0 14px 30px rgba(36,31,26,.12)">
+          <div style="position:absolute;left:-9px;top:50%;transform:translateY(-50%);width:18px;height:18px;border-radius:50%;background:#faf7f2;border:1px solid rgba(36,31,26,.12)"></div>
+          <div style="position:absolute;right:-9px;top:50%;transform:translateY(-50%);width:18px;height:18px;border-radius:50%;background:#faf7f2;border:1px solid rgba(36,31,26,.12)"></div>
+          <div data-r="pzbar" style="position:absolute;top:20px;right:20px;width:58px;height:16px;background:repeating-linear-gradient(90deg,#241f1a 0 3px,transparent 3px 5px,#241f1a 5px 6px,transparent 6px 10px,#241f1a 10px 14px,transparent 14px 16px,#241f1a 16px 17px,transparent 17px 21px,#241f1a 21px 23px,transparent 23px 27px);opacity:.35"></div>
+          <div data-r="pztitle" style="font:600 16px 'Noto Sans TC',sans-serif;padding-right:64px">{{ pz.brand }}</div>
+          <div style="font:400 13.5px/1.7 'Noto Sans TC',sans-serif;color:#6d5f4f">{{ pz.desc }}</div>
+          <div style="width:100%;border-top:1.5px dashed rgba(36,31,26,.18);margin:2px 0"></div>
+          <div style="display:flex;justify-content:space-between;gap:10px;font:500 10.5px ui-monospace,Menlo,monospace;letter-spacing:.16em;color:#b0703c"><span>{{ pz.tag }}</span><span style="color:#8a7a66">{{ pz.seat }}</span></div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display:flex;align-items:baseline;gap:18px;margin-bottom:28px">
+      <div style="font:400 30px Georgia,'Noto Serif TC',serif">{{ t.roleH }}</div>
+      <div style="font:500 12px ui-monospace,Menlo,monospace;letter-spacing:.22em;color:#b0703c">MY ROLE</div>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <div style="display:grid;grid-template-columns:56px 1fr;gap:20px;align-items:baseline;padding:22px 0;border-top:1px solid rgba(36,31,26,.12)">
+        <div style="font:400 26px Georgia,serif;color:#c2ab88">01</div>
+        <div style="font:400 15px/1.9 'Noto Sans TC',sans-serif;color:#3d362e"><b>{{ t.r1b }}</b>{{ t.r1 }}</div>
+      </div>
+      <div style="display:grid;grid-template-columns:56px 1fr;gap:20px;align-items:baseline;padding:22px 0;border-top:1px solid rgba(36,31,26,.12)">
+        <div style="font:400 26px Georgia,serif;color:#c2ab88">02</div>
+        <div style="font:400 15px/1.9 'Noto Sans TC',sans-serif;color:#3d362e"><b>{{ t.r2b }}</b>{{ t.r2 }}</div>
+      </div>
+      <div style="display:grid;grid-template-columns:56px 1fr;gap:20px;align-items:baseline;padding:22px 0;border-top:1px solid rgba(36,31,26,.12);border-bottom:1px solid rgba(36,31,26,.12)">
+        <div style="font:400 26px Georgia,serif;color:#c2ab88">03</div>
+        <div style="font:400 15px/1.9 'Noto Sans TC',sans-serif;color:#3d362e"><b>{{ t.r3b }}</b>{{ t.r3 }}</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { s1: false, s2: false, s3: false, gatesIn: false, statP: 0, lang: (typeof localStorage !== 'undefined' && localStorage.getItem('julie-lang')) || 'zh' };
+
+  dict = {
+    zh: {
+      pageH: 'Cake 轉職季跨品牌合作', back: '← 回到首頁', boardMeta: 'GATE C · SEAT 2026 · 轉職季',
+      heroH1: '用品牌資源交換，', heroH2: '把獎品池變成活動聲量。',
+      heroBody: '擔任轉職季 campaign 的合作開發與溝通窗口，鎖定求職者「課程、通勤、閱讀、生活」四類需求開發品牌，於三週內完成 20+ 品牌 outreach 與洽談，促成 8 個跨品牌合作。以資源交換與聯名推廣取代付費採購，整合出「人人有獎」的求職應援刮刮樂獎池。',
+      s1v: '3 週', s1l: '完成開發到上線', s2l: '品牌 outreach', s3l: '跨品牌合作成交', s4l: '整合合作價值',
+      propH: '提案發想與包裝策略',
+      propSub: '把「轉職」包裝成一趟登機旅程：以 LINE OA 作為登機入口，將受眾分流至三個登機門，再用「食・行・育・樂」的生活化框架，讓每個品牌都能在求職者的旅程裡找到自己的位置。',
+      step1: '敘事：三大 TA 登機分流', step2: '包裝：#求職應援包，用「食行育樂」為品牌留位置', step3: '對價：明確的資源交換，讓品牌容易點頭',
+      g1t: '初次登機・學生新鮮人', g1d: '用 AI 把「第一份工作門檻」變低：探索職涯方向、整理能力盤點、生成初步履歷。',
+      g2t: '職涯迷惘者・想轉換跑道', g2d: '知道要換跑道、不知道下一步：用 AI 盤點技能、興趣與市場需求，生成可行轉職路線圖。',
+      g3t: '高薪頭等艙', g3d: '用 AI 包裝專案、成果與技能，生成投遞與面試策略，幫助求職者爭取高薪職缺。',
+      p1t: '先吃飽，再準備面試', p1d: '餐飲、飲品品牌陪你吃飽迎戰下一關。',
+      p2t: '面試路上別再出狀況', p2d: '交通、乘車品牌陪你面試穩穩到場。',
+      p3t: '真正的準備來自了解自己', p3d: '課程、閱讀與職涯工具，陪你走好每一步。',
+      p4t: '轉職很辛苦，記得休息', p4d: '生活、娛樂品牌陪你在努力之外找回平衡。',
+      exA: 'CAKE 提供', exA1: 'IG / FB 貼文與限動，分享品牌人才與企業文化故事', exA2: '創業人人才管理、企業文化 SEO 文章專訪', exA3: '與其他品牌共列求職資源包的社群曝光',
+      exB: '品牌提供', exB1: '數位現金券、實體商品兌換券等獎項資源', exB2: '品牌素材、獎項資源、內容共同露出', exB3: '依品牌目標彈性選擇交換形式與執行次數',
+      whyH: '品牌願意點頭的四個理由',
+      tag1t: '零現金門檻', tag1d: '以資源交換取代付費採購，品牌用既有資源就能參與。',
+      tag2t: '精準 TA 重疊', tag2d: '轉職與新鮮人族群正是課程、閱讀、生活品牌想觸及的受眾。',
+      tag3t: '敘事裡有角色', tag3d: '食行育樂框架讓品牌不是贊助商，而是求職旅程的應援者。',
+      tag4t: '對價清楚透明', tag4d: '提案直接列出雙方交付項目與範例額度，降低決策成本。',
+      prizeH1: '求職應援刮刮樂', prizeH2: '獎項一覽', prizeSub: '近 6,000 份贈品、人人有獎——每一項都是與品牌一對一談成的資源交換。',
+      roleH: '我負責的事',
+      r1b: '獎項策略', r1: '——從求職者旅程（學習、諮詢、通勤、形象）反推獎項組合，讓獎池本身就是活動敘事的一部分。',
+      r2b: '品牌開發與談判', r2: '——三週內 20+ 品牌 outreach，以資源交換與聯名曝光取代付費採購，成交 8 家。',
+      r3b: '合作溝通與執行', r3: '——擔任品牌窗口，統籌授權、素材與檔期，讓近 6,000 份贈品準時上線、人人有獎。'
+    },
+    en: {
+      pageH: 'Cake Job-Change Season Partnerships', back: '← Back to Home', boardMeta: 'GATE C · SEAT 2026 · JOB-CHANGE SEASON',
+      heroH1: 'Trading brand resources,', heroH2: 'turning a prize pool into campaign buzz.',
+      heroBody: 'As partnership development and communication lead for the job-change season campaign, I targeted four job-seeker needs — courses, commuting, reading, lifestyle — reaching out to 20+ brands in three weeks and closing 8 cross-brand partnerships. Resource swaps and co-branded promotion replaced paid procurement, building an "everyone wins" scratch-card prize pool.',
+      s1v: '3 wks', s1l: 'From outreach to launch', s2l: 'Brands contacted', s3l: 'Partnerships closed', s4l: 'Combined partnership value',
+      propH: 'Proposal & Packaging Strategy',
+      propSub: 'Packaging "job change" as a boarding journey: LINE OA as the boarding entrance, audiences routed to three gates, and a lifestyle framework of Food · Transit · Learning · Leisure that gives every brand a place in the job seeker\'s journey.',
+      step1: 'Narrative: three TAs, three boarding gates', step2: 'Packaging: #JobSupportPack — Food·Transit·Learning·Leisure saves a seat for every brand', step3: 'Exchange: clear, concrete resource swaps that make it easy to say yes',
+      g1t: 'First Boarding · Students & New Grads', g1d: 'Lowering the bar to a first job with AI: explore directions, map skills, and generate a first resume.',
+      g2t: 'Career Switchers · Feeling Lost', g2d: 'Know you want to switch but not sure how: AI maps skills, interests, and market demand into a feasible route.',
+      g3t: 'First Class · High Earners', g3d: 'AI packages projects, results, and skills into application and interview strategies for top-tier roles.',
+      p1t: 'Eat well, then prep', p1d: 'Food & beverage brands fuel you up for the next round.',
+      p2t: 'No hiccups on the way', p2d: 'Transit brands get you to the interview on time.',
+      p3t: 'Real prep is knowing yourself', p3d: 'Courses, reading, and career tools for every step.',
+      p4t: 'Job hunting is hard — rest too', p4d: 'Lifestyle & entertainment brands help you recharge.',
+      exA: 'CAKE PROVIDES', exA1: 'IG / FB posts & stories sharing brand talent and culture stories', exA2: 'SEO interview articles on talent management and company culture', exA3: 'Social exposure alongside other brands in the job-support pack',
+      exB: 'BRANDS PROVIDE', exB1: 'Prize resources: digital cash vouchers, product redemption coupons', exB2: 'Brand assets, prizes, and co-published content', exB3: 'Flexible swap formats and frequency based on brand goals',
+      whyH: 'FOUR REASONS BRANDS SAY YES',
+      tag1t: 'Zero cash required', tag1d: 'Resource swaps replace paid procurement — brands join with what they already have.',
+      tag2t: 'Precise TA overlap', tag2d: 'Job switchers and new grads are exactly who course, reading, and lifestyle brands want.',
+      tag3t: 'A role in the story', tag3d: 'The lifestyle framework makes brands supporters of the journey, not just sponsors.',
+      tag4t: 'Transparent terms', tag4d: 'Proposals list both sides\' deliverables and sample quotas up front, cutting decision cost.',
+      prizeH1: 'Job-Support Scratch Card', prizeH2: 'Prize Pool', prizeSub: 'Nearly 6,000 gifts, everyone wins — every item a one-on-one resource swap negotiated with the brand.',
+      roleH: 'What I Owned',
+      r1b: 'Prize strategy', r1: ' — reverse-engineering the prize mix from the job seeker journey (learning, mentoring, commuting, image), so the pool itself tells the campaign story.',
+      r2b: 'Brand development & negotiation', r2: ' — 20+ brands contacted in three weeks; resource swaps and co-branding replaced paid procurement; 8 deals closed.',
+      r3b: 'Partner communication & delivery', r3: ' — single point of contact managing rights, assets, and schedules to launch nearly 6,000 gifts on time.'
+    }
+  };
+
+  enPrizes = ['Full course voucher for a selected class (up to $5,580)', '1-on-1 mentor session (up to $2,100)', 'One-year free license', 'Ride credit for interview commutes', 'One-month free app access', 'E-book credit / discount voucher', 'Space credit / discount voucher', 'Personal branding photo session', '3GB free eSIM code · drink voucher'];
+
+  setLang(l) {
+    this.setState({ lang: l });
+    try { localStorage.setItem('julie-lang', l); } catch (e) {}
+  }
+
+  prizes = [
+    { brand: 'Hahow 好學校', desc: '指定課程全額抵用券（價值最高 $5,580）', tag: 'LEARNING', seat: 'SEAT 01' },
+    { brand: '大大帶我飛', desc: '導師 1 on 1 諮詢（價值最高 $2,100）', tag: 'MENTORSHIP', seat: 'SEAT 02' },
+    { brand: 'NordVPN', desc: '一年免費序號', tag: 'DIGITAL TOOLS', seat: 'SEAT 03' },
+    { brand: 'yoxi', desc: '面試通勤乘車金', tag: 'MOBILITY', seat: 'SEAT 04' },
+    { brand: '今周刊', desc: '一個月 APP 免費使用', tag: 'MEDIA', seat: 'SEAT 05' },
+    { brand: 'Readmoo 讀墨', desc: '電子書使用金／折價券', tag: 'READING', seat: 'SEAT 06' },
+    { brand: '小樹屋', desc: '空間使用金／折價券', tag: 'SPACE', seat: 'SEAT 07' },
+    { brand: '好時有影', desc: '個人形象照拍攝', tag: 'PERSONAL BRANDING', seat: 'SEAT 08' },
+    { brand: 'Saily eSIM ＆ 老賴茶棧', desc: '3GB 免費序號・飲料兌換券', tag: 'LIFESTYLE', seat: 'SEAT 09' }
+  ];
+
+  componentDidMount() {
+    if (!('IntersectionObserver' in window)) {
+      this.setState({ s1: true, s2: true, s3: true, gatesIn: true, statP: 1 });
+      return;
+    }
+    this.io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        const kind = en.target.getAttribute('data-anim');
+        this.io.unobserve(en.target);
+        if (kind === 'step1') this.setState({ s1: true });
+        if (kind === 'step2') this.setState({ s2: true });
+        if (kind === 'step3') this.setState({ s3: true });
+        if (kind === 'gates') this.setState({ gatesIn: true });
+        if (kind === 'herostats') this.statCountUp();
+      });
+    }, { threshold: 0.4 });
+    this.obTimer = setTimeout(() => this.reattachAnims(true), 300);
+  }
+
+  reattachAnims(force) {
+    if (!this.io) return;
+    const now = Date.now();
+    if (!force && this._lastScan && now - this._lastScan < 600) return;
+    this._lastScan = now;
+    document.querySelectorAll('[data-anim]').forEach((el) => {
+      if (!el.__animObserved) { el.__animObserved = true; this.io.observe(el); }
+    });
+  }
+
+  componentDidUpdate() { this.reattachAnims(); }
+
+  componentWillUnmount() {
+    clearTimeout(this.obTimer);
+    if (this.io) this.io.disconnect();
+    if (this.raf) cancelAnimationFrame(this.raf);
+  }
+
+  statCountUp() {
+    const dur = 1100, t0 = performance.now();
+    const tick = (now) => {
+      const p = Math.min(1, (now - t0) / dur);
+      this.setState({ statP: 1 - Math.pow(1 - p, 3) });
+      if (p < 1) this.raf = requestAnimationFrame(tick);
+    };
+    this.raf = requestAnimationFrame(tick);
+  }
+
+  renderVals() {
+    const g = this.state.gatesIn;
+    const lang = this.state.lang, en = lang === 'en';
+    const active = { bg: '#241f1a', fg: '#faf7f2' }, idle = { bg: 'transparent', fg: '#8a7a66' };
+    return {
+      t: this.dict[lang],
+      setZh: () => this.setLang('zh'),
+      setEn: () => this.setLang('en'),
+      zhBg: !en ? active.bg : idle.bg, zhFg: !en ? active.fg : idle.fg,
+      enBg: en ? active.bg : idle.bg, enFg: en ? active.fg : idle.fg,
+      prizes: this.prizes.map((p, i) => ({ ...p, desc: en ? this.enPrizes[i] : p.desc })),
+      hv1: Math.max(1, Math.round(3 * this.state.statP)) + (en ? ' wks' : ' 週'),
+      hv2: Math.round(20 * this.state.statP) + '+',
+      hv3: '' + Math.round(8 * this.state.statP),
+      hv4: 'NT$' + Math.round(400 * this.state.statP) + 'K+',
+      plane1L: this.state.s1 ? '100%' : '0%',
+      plane2L: this.state.s2 ? '100%' : '0%',
+      plane3L: this.state.s3 ? '100%' : '0%',
+      gateO: g ? 1 : 0,
+      gateT: g ? 'translateY(0)' : 'translateY(18px)',
+      signT: g ? 'translateX(-50%) translateY(0)' : 'translateX(-50%) translateY(-14px)'
+    };
+  }
+}
+</script>
+</body>
+</html>
