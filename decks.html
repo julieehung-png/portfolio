@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,12 +13,13 @@
 <meta name="twitter:card" content="summary">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<script src="./support.js"></script>
+<script src="./support.js" defer></script>
 </head>
 <body>
 <x-dc>
 <helmet data-dc-atomics>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&amp;family=Noto+Serif+TC:wght@500;600;700&amp;display=swap">
 <style>
 body{margin:0;background:#faf7f2}
@@ -38,7 +39,7 @@ body{margin:0;background:#faf7f2}
 </style>
 </helmet>
 
-<div style="background:#faf7f2;color:#241f1a;font-family:Georgia,'Noto Serif TC',serif;min-height:100vh">
+<div role="main" style="background:#faf7f2;color:#241f1a;font-family:Georgia,'Noto Serif TC',serif;min-height:100vh">
   <div data-r="wrap" style="position:relative;max-width:1280px;margin:0 auto;padding:56px 64px 96px;box-sizing:border-box">
     <div data-r="hdeco" style="position:absolute;top:130px;right:64px;pointer-events:none;font:400 24px Georgia,serif;color:#b0703c;opacity:.45;animation:spinSlow 28s linear infinite">✳︎</div>
     <div data-r="hdeco" style="position:absolute;top:150px;right:120px;pointer-events:none;font:400 14px Georgia,serif;color:#b0703c;opacity:.5">✦</div>
@@ -66,7 +67,7 @@ body{margin:0;background:#faf7f2}
     <div data-r="viewer" style="display:grid;grid-template-columns:1.55fr 1fr;gap:40px;align-items:start;margin-bottom:22px">
       <div style="position:relative">
         <div onClick="{{ openLb }}" style="border-radius:14px;overflow:hidden;background:#fff;border:1px solid rgba(36,31,26,.08);box-shadow:0 14px 36px rgba(36,31,26,.12);cursor:zoom-in;transition:box-shadow .3s" style-hover="box-shadow:0 22px 48px rgba(36,31,26,.17)">
-          <img src="{{ stageImg }}" decoding="async" style="width:100%;display:block;aspect-ratio:16/9.4;object-fit:contain;background:#fff">
+          <img src="{{ stageImg }}" alt="簡報投影片" decoding="async" style="width:100%;display:block;aspect-ratio:16/9.4;object-fit:contain;background:#fff">
         </div>
         <button onClick="{{ prevSlide }}" style="position:absolute;left:-14px;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:1px solid rgba(36,31,26,.15);background:#faf7f2;color:#241f1a;font-size:15px;cursor:pointer;box-shadow:0 4px 14px rgba(36,31,26,.12);transition:background .2s" style-hover="background:#241f1a;color:#faf7f2">←</button>
         <button onClick="{{ nextSlide }}" style="position:absolute;right:-14px;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:1px solid rgba(36,31,26,.15);background:#faf7f2;color:#241f1a;font-size:15px;cursor:pointer;box-shadow:0 4px 14px rgba(36,31,26,.12);transition:background .2s" style-hover="background:#241f1a;color:#faf7f2">→</button>
@@ -87,7 +88,7 @@ body{margin:0;background:#faf7f2}
     <div style="display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;padding:4px 2px 10px">
       <sc-for list="{{ thumbs }}" as="th" hint-placeholder-count="6">
         <div onClick="{{ th.pick }}" style="flex:0 0 128px;border-radius:8px;overflow:hidden;cursor:pointer;border:2px solid {{ th.bd }};opacity:{{ th.op }};transition:border-color .2s,opacity .2s" style-hover="opacity:1">
-          <img src="{{ th.img }}" loading="lazy" decoding="async" style="width:100%;display:block;aspect-ratio:16/9.4;object-fit:cover;background:#fff">
+          <img src="{{ th.img }}" alt="投影片縮圖" loading="lazy" decoding="async" style="width:100%;display:block;aspect-ratio:16/9.4;object-fit:cover;background:#fff">
         </div>
       </sc-for>
     </div>
@@ -145,7 +146,7 @@ body{margin:0;background:#faf7f2}
   <!-- lightbox -->
   <sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
     <div onClick="{{ lbClose }}" style="position:fixed;inset:0;z-index:100;background:rgba(20,16,12,.88);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;box-sizing:border-box;cursor:zoom-out">
-      <img src="{{ stageImg }}" onClick="{{ lbStop }}" style="max-width:94%;max-height:82vh;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.5);cursor:default">
+      <img src="{{ stageImg }}" alt="簡報投影片放大檢視" onClick="{{ lbStop }}" style="max-width:94%;max-height:82vh;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.5);cursor:default">
       <div style="display:flex;align-items:center;gap:24px;margin-top:22px">
         <button onClick="{{ lbPrev }}" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(250,247,242,.4);background:transparent;color:#faf7f2;font-size:16px;cursor:pointer;transition:background .2s" style-hover="background:rgba(250,247,242,.15)">←</button>
         <div style="font:500 13px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:rgba(250,247,242,.8)">{{ stageCaption }}</div>

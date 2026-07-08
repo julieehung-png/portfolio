@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,12 +13,13 @@
 <meta name="twitter:card" content="summary">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<script src="./support.js"></script>
+<script src="./support.js" defer></script>
 </head>
 <body>
 <x-dc>
 <helmet data-dc-atomics>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&amp;family=Noto+Serif+TC:wght@500;600;700&amp;display=swap">
 <style>
 body{margin:0;background:#faf7f2}
@@ -51,7 +52,7 @@ body{margin:0;background:#faf7f2}
 </style>
 </helmet>
 
-<div style="background:#faf7f2;color:#241f1a;font-family:Georgia,'Noto Serif TC',serif;min-height:100vh">
+<div role="main" style="background:#faf7f2;color:#241f1a;font-family:Georgia,'Noto Serif TC',serif;min-height:100vh">
   <div data-r="wrap" style="position:relative;max-width:1180px;margin:0 auto;padding:56px 64px 96px;box-sizing:border-box">
     <div data-r="hdeco" style="position:absolute;top:210px;right:70px;pointer-events:none;font:400 22px Georgia,serif;color:#b0703c;opacity:.45;animation:spinSlow 30s linear infinite">✳︎</div>
     <div data-r="hdeco" style="position:absolute;top:238px;right:122px;pointer-events:none;font:400 14px Georgia,serif;color:#b0703c;opacity:.5">✦</div>
@@ -83,7 +84,7 @@ body{margin:0;background:#faf7f2}
 
     <div data-r="hero" style="display:grid;grid-template-columns:420px 1fr;gap:56px;align-items:center;margin-bottom:72px">
       <div style="border-radius:16px;overflow:hidden;background:#fff;border:1px solid rgba(36,31,26,.08);box-shadow:0 18px 44px rgba(36,31,26,.13)">
-        <img src="ea-i13.jpg" style="width:100%;display:block">
+        <img src="ea-i13.jpg" alt="轉職季跨品牌合作主視覺" decoding="async" style="width:100%;display:block">
       </div>
       <div style="display:flex;flex-direction:column;gap:22px">
         <div style="font:400 30px/1.5 Georgia,'Noto Serif TC',serif">{{ t.heroH1 }}<br>{{ t.heroH2 }}</div>
